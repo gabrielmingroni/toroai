@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply h-full bg-chrome text-text font-sans;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+}
+
+/* Component classes lifted from the v8 demo so JSX reads the same as the prototype. */
+@layer components {
+  .mono { @apply font-mono; }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] border border-chrome-lighter bg-chrome-light text-text2 text-[12px] font-medium cursor-pointer transition-colors;
+  }
+  .btn:hover { @apply bg-chrome-lighter text-text; }
+  .btn-primary {
+    @apply bg-accent border-accent text-[#1a1408];
+  }
+  .btn-primary:hover { filter: brightness(1.06); }
+  .btn-ghost {
+    @apply bg-transparent border-transparent text-text2;
+  }
+  .btn-ghost:hover { @apply bg-chrome-light text-text; }
+  .btn-danger {
+    @apply bg-transparent border-fail text-fail;
+  }
+  .btn-danger:hover { @apply bg-fail/10; }
+
+  /* Inputs (CAD-style — thin border, no rounded corners, focus-orange) */
+  .input {
+    @apply w-full bg-chrome-dark border border-chrome-lighter rounded-[2px] px-3 py-2 text-text text-[13px] outline-none transition-colors;
+  }
+  .input:hover { @apply border-text4; }
+  .input:focus { @apply border-accent; }
+  .input::placeholder { @apply text-text4; }
+
+  .field-label {
+    @apply block text-[10.5px] uppercase tracking-[0.06em] text-text3 mb-1.5 font-medium;
+  }
+
+  /* Cards / panels */
+  .card {
+    @apply bg-chrome border border-chrome-dark rounded-[2px] overflow-hidden;
+  }
+  .card-header {
+    @apply px-3.5 py-2 border-b border-chrome-dark flex items-center justify-between;
+  }
+  .card-title {
+    @apply text-[10px] font-medium uppercase tracking-[0.06em] text-text3;
+  }
+  .card-body { @apply p-3.5; }
+
+  /* Status badges */
+  .tag {
+    @apply inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[9.5px] font-medium;
+  }
+  .tag-pass { color: theme('colors.pass'); background: rgba(63, 174, 93, 0.12); }
+  .tag-warn { color: theme('colors.warn'); background: rgba(201, 147, 31, 0.12); }
+  .tag-fail { color: theme('colors.fail'); background: rgba(196, 74, 74, 0.12); }
+  .tag-info { color: theme('colors.info'); background: rgba(74, 144, 214, 0.12); }
+}
+
+/* Scrollbars — match the demo */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #1f2126; }
+::-webkit-scrollbar-thumb { background: #3f434b; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #50545e; }
